@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">stef1codes-simple-movie-app</string>
+    <string name="title_movie">title movie</string>
+    <string name="overview">overview</string>
+    <string name="current_popular_movies">current popular movies</string>
+    <string name="release_date_1_1_1991">release date : 1-1-1991</string>
+    <string name="_161354">161354</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="10dp"
+    android:orientation="vertical"
+    android:weightSum="3">
+
+
+    <ImageView
+        android:id="@+id/imageMovie"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_weight="2.5"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher_background"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp"
+
+        />
+
+    <TextView
+        android:id="@+id/textMovieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.2"
+        android:textColor="@android:color/black"
+        android:textColorHighlight="#ffff"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="160dp"
+        tools:text="Avengers" />
+
+</LinearLayout>
