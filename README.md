@@ -10,8 +10,16 @@ In order to make the mobile app work, you have to create an account on https://w
    "const val API_KEY  = "YOUR API KEY HERE :)"
 
 
-<img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560168.png" width=300> <img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560175.png" width=300>  <img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560186.png" width=300>
+<img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560168.png" width=250> <img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560175.png" width=250>  <img src="https://github.com/stef1codes/simple-movie-app-mvvm-kotlin/blob/master/app/src/main/res/drawable-hdpi/screenshot_1624560186.png" width=250>
 
 
-# Tech stack:
-Kotlin, MVVM, Retrofit, Coroutines, Glide.
+# Design architecture
+- MVVM(Model, View, ViewModel)
+
+# Technologies
+- Android, Kotlin
+- The Movie Database
+- Retrofit 
+- OkHttp - Interceptor
+- Coroutines
+- Glide
