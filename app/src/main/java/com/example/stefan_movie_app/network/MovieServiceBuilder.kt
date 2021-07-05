@@ -1,17 +1,16 @@
-package com.example.stefan_movie_app.api
+package com.example.stefan_movie_app.network
 
-import androidx.constraintlayout.solver.state.State
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.HttpUrl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 
 
 object MovieServiceBuilder {
+
+    const val API_KEY = "YOUR API KEY HERE"
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor {  chain->
@@ -32,6 +31,6 @@ object MovieServiceBuilder {
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build().create(MovieService::class.java)
-     val apiClient = retrofit
+     val apiClient = retrofit!!
 
 }

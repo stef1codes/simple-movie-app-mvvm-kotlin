@@ -1,14 +1,13 @@
 package com.example.stefan_movie_app.viewmodel
 
-import android.util.Log
 import com.example.stefan_movie_app.model.PopularMovies
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.stefan_movie_app.api.NetworkResponse
-import com.example.stefan_movie_app.model.PopularMovie
+import com.example.stefan_movie_app.network.NetworkResponse
 import com.example.stefan_movie_app.repository.MovieRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel() {
@@ -19,7 +18,9 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
 
     init
     {
-        viewModelScope.launch { mutableMovies.postValue(movieRepository.getPopularMovies())}
+        println("main runBlocking      : I'm working in thread ${Thread.currentThread().id} my name is : ${Thread.currentThread().name}")
+        viewModelScope.launch(Dispatchers.Main){ mutableMovies.postValue(movieRepository.getPopularMovies())}
+
     }
 
 

@@ -10,6 +10,72 @@
     tools:context=".view.MovieActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idNoConnectionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.676" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="71dp"
+            android:layout_height="73dp"
+            android:src="@drawable/ic_baseline_signal_wifi_off_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.36"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="no internet connection"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.151" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="please check your internet connection then refresh the page!"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.046" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idconnectionLayout"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
@@ -226,7 +292,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
+
+        android:visibility="gone"
         android:id="@+id/idRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -234,5 +303,6 @@
         android:layout_weight="4"
         android:orientation="horizontal"
         tools:listitem="@layout/movielist_row" />
+
 
 </LinearLayout>

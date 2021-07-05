@@ -5,4 +5,6 @@
     <string name="current_popular_movies">current popular movies</string>
     <string name="release_date_1_1_1991">release date : 1-1-1991</string>
     <string name="_161354">161354</string>
+    <string name="please_turn_on_your_internet_connection_and_wait_until_the_app_starts">please turn on your internet connection and wait until the app starts</string>
+    <string name="todo">TODO</string>
 </resources>

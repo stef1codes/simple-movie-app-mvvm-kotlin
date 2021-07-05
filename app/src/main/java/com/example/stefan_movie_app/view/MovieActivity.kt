@@ -1,6 +1,7 @@
 package com.example.stefan_movie_app.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,17 +10,16 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.stefan_movie_app.R
-import com.example.stefan_movie_app.`interface`.onMovieClick
+import com.example.stefan_movie_app.observeConnection.ConnectionObservation
+import com.example.stefan_movie_app.`interface`.OnMovieClick
 import com.example.stefan_movie_app.adapter.MovieListAdapter
-import com.example.stefan_movie_app.api.BASE_URL_IMAGE
+import com.example.stefan_movie_app.network.BASE_URL_IMAGE
 import com.example.stefan_movie_app.model.PopularMovie
 import com.example.stefan_movie_app.repository.MovieRepository
 import com.example.stefan_movie_app.showMessage
 import com.example.stefan_movie_app.viewmodel.MovieViewModel
 import com.example.stefan_movie_app.viewmodel.MovieViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class MovieActivity : AppCompatActivity() {
     private lateinit var movieListAdaper: MovieListAdapter
@@ -27,20 +27,55 @@ class MovieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
-        setViewModel()
+        val connectionObservation = ConnectionObservation(applicationContext)
+       // check if the mobile phone is connected to network
+        connectionObservation.observe(this, { isInternetConnection: Boolean ->
 
-        setMovieListAdapter()
+            //If the phone is connected, proceed these tasks
+                if (isInternetConnection) {
 
-        observeMovies()
+                    setViewModel()
 
-        onclickMovie()
+                    setMovieListAdapter()
+
+                    observeMovies()
+
+                    showViewConnected()
+
+                    onclickMovie()
+
+                } else {
+                    // is the phone not connected, show the user a message
+
+                    showViewNotConnected()
+
+
+                }
+
+        })
+    }
+
+    private fun showViewNotConnected() {
+        idNoConnectionLayout.visibility = View.VISIBLE
+        idRecyclerview.visibility = View.GONE
+        idconnectionLayout.visibility = View.GONE
+        progress_circular.visibility = View.VISIBLE
+
+    }
+
+    private fun showViewConnected() {
+        idRecyclerview.visibility = View.VISIBLE
+        idconnectionLayout.visibility = View.VISIBLE
+        idNoConnectionLayout.visibility = View.GONE
+        progress_circular.visibility = View.GONE
 
     }
 
     private fun onclickMovie() {
-        movieListAdaper.setOnItemClickListener(object : onMovieClick {
+        movieListAdaper.setOnItemClickListener(object : OnMovieClick {
             override fun onItemClick(movie: PopularMovie) {
                 setImage(movie)
             }
@@ -84,12 +119,14 @@ class MovieActivity : AppCompatActivity() {
                     showMessage(this, "Successful!")
                     movieListAdaper.setData(response.body.popularMovies)
                     setImage(response.body.popularMovies.first())
+
                 }
 
                 //if the data could'nt be retrieved, show this message
                 response.failed ->
                     showMessage(this, "${response.message}")
             }
+
         })
     }
 
@@ -107,6 +144,8 @@ class MovieActivity : AppCompatActivity() {
             MovieViewModelFactory(MovieRepository())
         ).get(MovieViewModel::class.java)
     }
+
+
 }
 
 

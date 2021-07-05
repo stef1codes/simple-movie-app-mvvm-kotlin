@@ -11,21 +11,20 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.stefan_movie_app.R
-import com.example.stefan_movie_app.`interface`.onMovieClick
-import com.example.stefan_movie_app.api.BASE_URL_IMAGE
-import com.example.stefan_movie_app.glideImage
+import com.example.stefan_movie_app.`interface`.OnMovieClick
+import com.example.stefan_movie_app.network.BASE_URL_IMAGE
 import com.example.stefan_movie_app.model.PopularMovie
 
 class MovieListAdapter : ListAdapter<PopularMovie, MovieListAdapter.MovieViewHolder>(MovieComparator()) {
     private var list = mutableListOf<PopularMovie>()
-    private lateinit var mListener: onMovieClick
+    private lateinit var mListener: OnMovieClick
 
     fun setData(list: List<PopularMovie>) {
         this.list = list as MutableList<PopularMovie>
         submitList(list)
     }
 
-    fun setOnItemClickListener(listener: onMovieClick) {
+    fun setOnItemClickListener(listener: OnMovieClick) {
         mListener = listener
     }
 
@@ -42,7 +41,7 @@ class MovieListAdapter : ListAdapter<PopularMovie, MovieListAdapter.MovieViewHol
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var textMovieTitle = itemView.findViewById<TextView>(R.id.textMovieTitle)
+        private var textMovieTitle = itemView.findViewById<TextView>(R.id.textMovieTitle)
 
         private  var imagMovie:ImageView = itemView.findViewById(R.id.imageMovie)
 
