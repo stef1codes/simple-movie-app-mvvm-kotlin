@@ -18,7 +18,6 @@ class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel()
 
     init
     {
-        println("main runBlocking      : I'm working in thread ${Thread.currentThread().id} my name is : ${Thread.currentThread().name}")
         viewModelScope.launch(Dispatchers.Main){ mutableMovies.postValue(movieRepository.getPopularMovies())}
 
     }
